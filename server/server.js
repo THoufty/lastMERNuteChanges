@@ -2,9 +2,19 @@ const express = require('express');
 const path = require('path');
 const db = require('./config/connection');
 const routes = require('./routes');
+const mongoose = require('mongoose');
+
+
+const PORT = process.env.PORT || 3001;
 
 const app = express();
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/lastMERNuteChanges');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/lastMERNuteChanges', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
+const db = mongoose.connection;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
