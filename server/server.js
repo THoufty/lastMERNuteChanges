@@ -4,7 +4,7 @@ const db = require('./config/connection');
 const routes = require('./routes');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/lastMERNuteChanges');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
