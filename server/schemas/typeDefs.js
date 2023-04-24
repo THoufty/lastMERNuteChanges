@@ -10,6 +10,15 @@ type User {
 }
 
 type Book {
+    bookId: ID!
+    authors: [String]
+    description: String!
+    title: String!
+    image: String
+    link: String
+}
+
+input BookInput {
     bookId: String!
     authors: [String]
     description: String!
@@ -31,7 +40,7 @@ type Mutation {
     login(email: String!, password: String!): Auth
     createUser(username: String!, email: String!, password: String!): Auth
     deleteBook(bookId: String!): User
-    saveBook(input: Book!): User
+    saveBook(input: BookInput!): User
 }`
 
 module.exports = typeDefs
